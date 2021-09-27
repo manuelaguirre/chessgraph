@@ -9,14 +9,3 @@ export type LichessRatingObject = [
     day: number,
     rating: number,
 ]
-
-export type SVGDimensions = {
-    height: number,
-    width: number,
-    margin: {
-        top: number,
-        right: number,
-        bottom: number,
-        left: number,
-    },
-};
