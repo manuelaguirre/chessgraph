@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
-import { draw } from "../services/charts";
+import { draw as drawLineChart } from "../services/charts";
 import { getDataPoints } from "../services/requests";
 import { SVGDimensions } from "../types";
 
 const dimensions: SVGDimensions = {
-        height: 500,
-        width: 800,
+        height: 200,
+        width: 300,
         margin: {
             top: 50,
             right: 50,
@@ -22,17 +22,22 @@ const chart = ref(null);
 
 onMounted(() => {
     if (!chart.value) throw new Error("ref is undefined"); 
-    draw(dataset, dimensions, chart.value)
+    drawLineChart(dataset, dimensions)
 })
 </script>
 
 <template>
-    <article ref="chart" id="chart"></article>
+    <article ref="chart" id="chart"/>
 </template>
 
 <style>
-svg {
-    width: 100vw;
-    height: 100vw;
-}
+    #chart {
+        width: 50%;
+        max-height: 70vh;
+        margin: auto;
+
+        border: blueviolet 1px solid;
+    }
+
+
 </style>
