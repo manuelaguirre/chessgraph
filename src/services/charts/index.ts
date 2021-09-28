@@ -3,6 +3,12 @@ import * as d3 from "d3"
 
 export const draw = (dataset: RatingDataPoint[]) => {
     {
+        const margin = {
+            top: 20,
+            right: 20,
+            bottom: 20,
+            left: 20,
+        }
 
         const viewBox = {
             minX: 50,
@@ -29,7 +35,7 @@ export const draw = (dataset: RatingDataPoint[]) => {
         const yScale = d3
             .scaleLinear()
             .domain(yDomain)
-            .range([viewBox.height, 0]);
+            .range([viewBox.height - margin.bottom, margin.top]);
 
         svg
             .selectAll("circle")
@@ -69,6 +75,8 @@ export const draw = (dataset: RatingDataPoint[]) => {
         const axis = d3
             .axisLeft(yScale)
             .ticks(3)
+            .tickSize(1)
+
 
         svg.append("g")
             .call(axis)
